@@ -15,6 +15,8 @@ extension DBService {
     public func addPosts(postImage: UIImage, comment: String) {
         let childByAutoID = DBService.manager.getPosts().childByAutoId()
         childByAutoID.setValue(["userID" : FirebaseAuthService.getCurrentUser()!.uid,
+                                "userEmail" : FirebaseAuthService.getCurrentUser()?.email,
+                                "postTimeAndDateStamp" : "\(Date().timeIntervalSince1970)",
                                 "comment" : comment]) { (error, dbRef) in
                                     if let error = error {
                                         print("addPost error: \(error)")

@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 class PostTableViewCell: UITableViewCell {
 
@@ -29,6 +30,7 @@ class PostTableViewCell: UITableViewCell {
     lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.text = "currentuser@aol.com"
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.regular)
         return label
     }()
@@ -36,6 +38,7 @@ class PostTableViewCell: UITableViewCell {
     lazy var timeStampLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.text = "\(Date().timeIntervalSince1970)"
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.regular)
         return label
     }()
@@ -54,7 +57,7 @@ class PostTableViewCell: UITableViewCell {
         backgroundColor = .white
         setupViews()
     }
-    
+
     private func setupViews() {
         setupPostImageView()
         setupPostCommentLabel()
@@ -65,17 +68,17 @@ class PostTableViewCell: UITableViewCell {
     private func setupEmailLabel() {
         addSubview(emailLabel)
         emailLabel.translatesAutoresizingMaskIntoConstraints = false
-        emailLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        emailLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.35)
-        emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        emailLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
+        emailLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.4).isActive = true
+        emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
     }
     
     private func setupTimeStampLabel() {
         addSubview(timeStampLabel)
         timeStampLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeStampLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 3).isActive = true
+        timeStampLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 15).isActive = true
         timeStampLabel.widthAnchor.constraint(equalTo: emailLabel.widthAnchor).isActive = true
-        
+        timeStampLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
     }
     
     private func setupPostImageView() {
@@ -83,9 +86,10 @@ class PostTableViewCell: UITableViewCell {
         postImageView.translatesAutoresizingMaskIntoConstraints = false
         postImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         postImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
-        postImageView.leadingAnchor.constraint(equalTo: emailLabel.trailingAnchor, constant: 5).isActive = true
-        postImageView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.6).isActive = true
+        postImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
+        postImageView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.5).isActive = true
         postImageView.heightAnchor.constraint(equalTo: postImageView.widthAnchor).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
     }
     
     private func setupPostCommentLabel() {
@@ -93,6 +97,7 @@ class PostTableViewCell: UITableViewCell {
         postCommentLabel.translatesAutoresizingMaskIntoConstraints = false
         postCommentLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         postCommentLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        postCommentLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
         postCommentLabel.widthAnchor.constraint(equalTo: postImageView.widthAnchor).isActive = true
         postCommentLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
     }

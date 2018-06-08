@@ -21,6 +21,7 @@ class UploadView: UIView {
     lazy var orLabel: UILabel = {
         let label = UILabel()
         label.text = "-OR-"
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight.black)
         label.textColor = UIColor.black
         return label
@@ -29,10 +30,10 @@ class UploadView: UIView {
     lazy var commentTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = UIColor.lightGray
-        textView.text = "Add a description..."
+        textView.text = "Enter your comment here."
         textView.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
         textView.layer.borderColor = UIColor.black.cgColor
-        textView.layer.borderWidth = 0.2
+        textView.layer.borderWidth = 0.3
         return textView
     }()
     
@@ -62,7 +63,7 @@ class UploadView: UIView {
         newUserPostImageView.translatesAutoresizingMaskIntoConstraints = false
         newUserPostImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15).isActive = true
         newUserPostImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
-        newUserPostImageView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.65).isActive = true
+        newUserPostImageView.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.6).isActive = true
         newUserPostImageView.heightAnchor.constraint(equalTo: newUserPostImageView.widthAnchor).isActive = true
         
     }
@@ -70,14 +71,15 @@ class UploadView: UIView {
     private func setupORLabel() {
         addSubview(orLabel)
         orLabel.translatesAutoresizingMaskIntoConstraints = false
-        orLabel.topAnchor.constraint(equalTo: newUserPostImageView.bottomAnchor, constant: 10).isActive = true
         orLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, multiplier: 0.9).isActive = true
-        orLabel.bottomAnchor.constraint(equalTo: commentTextView.topAnchor, constant: -10).isActive = true
+        orLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        orLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
     }
     
     private func setupCommentTextView() {
         addSubview(commentTextView)
         commentTextView.translatesAutoresizingMaskIntoConstraints = false
+        commentTextView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 15).isActive = true
         commentTextView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         commentTextView.widthAnchor.constraint(equalTo: newUserPostImageView.widthAnchor).isActive = true
         commentTextView.heightAnchor.constraint(equalTo: newUserPostImageView.heightAnchor).isActive = true

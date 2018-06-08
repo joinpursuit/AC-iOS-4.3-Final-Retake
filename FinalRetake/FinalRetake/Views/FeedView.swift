@@ -13,6 +13,8 @@ class FeedView: UIView {
     lazy var feedTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "Post Cell")
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
         return tableView
     }()
     
@@ -32,10 +34,10 @@ class FeedView: UIView {
     }
     
     private func setupViews() {
-        setupPostTableViewCell()
+        setupPostTableView()
     }
     
-    private func setupPostTableViewCell() {
+    private func setupPostTableView() {
         addSubview(feedTableView)
         feedTableView.translatesAutoresizingMaskIntoConstraints = false
         feedTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true

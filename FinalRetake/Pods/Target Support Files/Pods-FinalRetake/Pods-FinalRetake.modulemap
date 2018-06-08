@@ -1,0 +1,6 @@
+framework module Pods_FinalRetake {
+  umbrella header "Pods-FinalRetake-umbrella.h"
+
+  export *
+  module * { export * }
+}
